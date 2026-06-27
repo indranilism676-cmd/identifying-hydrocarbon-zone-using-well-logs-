@@ -20,31 +20,30 @@ The application:
 * Identifies continuous pay zones
 * Exports prediction results
 
-
+---
 
 #  Features
 
- 1. Upload any Well Log CSV
+Upload any Well Log CSV
 
- 2. Interactive column mapping
+Interactive column mapping
 
- 3.Automatic missing value handling
+Automatic missing value handling
 
- 4.Dynamic depth interval detection
+Dynamic depth interval detection
 
- 5.Deep Neural Network prediction
+Deep Neural Network prediction
 
- 6.Hydrocarbon probability estimation
+Hydrocarbon probability estimation
 
- 7.Continuous pay-zone detection
+Continuous pay-zone detection
 
- Interactive well log visualization
+Interactive well log visualization
 
- Download prediction results as CSV
+Download prediction results as CSV
 
 
-
-#  Input Well Logs
+# Input Well Logs
 
 The trained model uses the following well logs:
 
@@ -58,7 +57,8 @@ The trained model uses the following well logs:
 The uploaded CSV may contain different column names because the application allows users to map columns interactively.
 
 
-#  Machine Learning Model
+
+# Machine Learning Model
 
 Model Type:
 
@@ -93,23 +93,24 @@ Regularization:
 
 * Dropout Layers
 
+---
 
+# 🛠 Tech Stack
 
-# Tech Stack
-
-1. Python
-2. TensorFlow / Keras
-3. Streamlit
-4.Pandas
-5.NumPy
-6.Matplotlib
-7.Scikit-learn
-8.Joblib
+* Python
+* TensorFlow / Keras
+* Streamlit
+* Pandas
+* NumPy
+* Matplotlib
+* Scikit-learn
+* Joblib
 
 ---
 
 # Project Structure
 
+```text
 Hydrocarbon-Zone-Prediction/
 │
 ├── app.py
@@ -119,10 +120,12 @@ Hydrocarbon-Zone-Prediction/
 ├── requirements.txt
 ├── README.md
 └── sample_data/
+```
+
+---
 
 
-sample example :
-
+# Input CSV Format
 
 Example:
 
@@ -132,10 +135,11 @@ Example:
 | 1002  | 45 | 150 | 2.08 | 0.10 |
 | 1004  | 52 | 90  | 2.18 | 0.15 |
 
-If your dataset uses different column names , simply map them using the sidebar.
+If your dataset uses different column names, simply map them using the sidebar.
 
+---
 
-#  Output
+# Output
 
 The application provides:
 
@@ -146,7 +150,7 @@ The application provides:
 * Reservoir Summary
 * Downloadable CSV Results
 
----
+
 
 #  Physical Significance
 
@@ -162,11 +166,11 @@ Potential applications include:
 
 **Note:** This model is intended for educational and research purposes. In real-world reservoir evaluation, predictions should be validated with core analysis, formation testing, production data, and expert petrophysical interpretation.
 
----
+
 
 #  Application Workflow
 
-
+```text
 Upload CSV
       │
       ▼
@@ -189,11 +193,11 @@ Pay Zone Detection
       │
       ▼
 Download Results
+```
 
+---
 
-
-
-#  Future Improvements
+# Future Improvements
 
 This project can be extended significantly to better reflect industry workflows:
 
@@ -211,7 +215,7 @@ This project can be extended significantly to better reflect industry workflows:
 * Deep/Medium/Shallow Resistivity
 * Spectral Gamma Ray (K, U, Th)
 
-###  3. Multi-Class Reservoir Classification
+### 3. Multi-Class Reservoir Classification
 
 Instead of binary classification, predict:
 
@@ -224,15 +228,13 @@ Instead of binary classification, predict:
 * Sandstone
 
 
-
-
-# Contributing
+#  Contributing
 
 Contributions are welcome. If you have ideas for improvements, bug fixes, or new features, feel free to open an issue or submit a pull request.
+
+
 
 #  Author
 
 **Indranil**
-
-
 
