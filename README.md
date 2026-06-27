@@ -136,7 +136,7 @@ Example:
 | 1002  | 45 | 150 | 2.08 | 0.10 |
 | 1004  | 52 | 90  | 2.18 | 0.15 |
 
-If your dataset uses different column names (e.g., `MD`, `GammaRay`, `LLD`, etc.), simply map them using the sidebar.
+If your dataset uses different column names , simply map them using the sidebar.
 
 
 #  Output
