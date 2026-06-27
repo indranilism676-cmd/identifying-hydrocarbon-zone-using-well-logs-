@@ -113,13 +113,13 @@ Regularization:
 ```text
 Hydrocarbon-Zone-Prediction/
 │
-├── app.py
-├── hydrocarbon_model.keras
-├── scaler.pkl
-├── training_notebook.ipynb
+├── hydrocarbon6.py
+├── hydrocarbon_prediction_model.keras
+├── scaler_cnn.pkl
+├── hydrocarbon_prediction.ipynb
 ├── requirements.txt
 ├── README.md
-└── sample_data/
+└── realistic_synthetic_well_logs_5000.csv/
 ```
 
 ---
@@ -136,6 +136,8 @@ Example:
 | 1004  | 52 | 90  | 2.18 | 0.15 |
 
 If your dataset uses different column names, simply map them using the sidebar.
+You can use the log.csv file to test the model.
+save the log.csv file and uplod it to get the output
 
 ---
 
