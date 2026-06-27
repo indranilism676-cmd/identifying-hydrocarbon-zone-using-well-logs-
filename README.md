@@ -36,7 +36,7 @@ The application:
 
  6.Hydrocarbon probability estimation
 
- C7.ontinuous pay-zone detection
+ 7.Continuous pay-zone detection
 
  Interactive well log visualization
 
