@@ -170,7 +170,7 @@ Potential applications include:
 
 #  Application Workflow
 
-```text
+
 Upload CSV
       │
       ▼
@@ -193,20 +193,20 @@ Pay Zone Detection
       │
       ▼
 Download Results
-```
 
----
+
+
 
 #  Future Improvements
 
 This project can be extended significantly to better reflect industry workflows:
 
-### 🔹 1. Train on Real Field Data
+###  1. Train on Real Field Data
 
 * Replace synthetic training data with publicly available well log datasets.
 * Improve generalization across different reservoirs and lithologies.
 
-### 🔹 2. Support Additional Well Logs
+###  2. Support Additional Well Logs
 
 * Spontaneous Potential (SP)
 * Sonic (DT)
@@ -215,7 +215,7 @@ This project can be extended significantly to better reflect industry workflows:
 * Deep/Medium/Shallow Resistivity
 * Spectral Gamma Ray (K, U, Th)
 
-### 🔹 3. Multi-Class Reservoir Classification
+###  3. Multi-Class Reservoir Classification
 
 Instead of binary classification, predict:
 
