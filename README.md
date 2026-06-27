@@ -110,19 +110,15 @@ Regularization:
 
 # Project Structure
 
-
 Hydrocarbon-Zone-Prediction/
 │
-├── hydrocarbon.py
+├── app.py
 ├── hydrocarbon_model.keras
 ├── scaler.pkl
-├── hydrocarbon_prediction.ipynb
+├── training_notebook.ipynb
 ├── requirements.txt
 ├── README.md
 └── sample_data/
-
-
-
 
 
 sample example :
