@@ -1,6 +1,3 @@
-# ==========================================================
-# HYDROCARBON ZONE PREDICTION APP (STREAMLIT)
-# ==========================================================
 
 import streamlit as st
 import pandas as pd
@@ -9,22 +6,13 @@ import matplotlib.pyplot as plt
 import tensorflow as tf
 import joblib
 
-# ----------------------------------------------------------
-# PAGE CONFIG
-# ----------------------------------------------------------
 
-st.set_page_config(
-    page_title="Hydrocarbon Prediction",
-    layout="wide"
-)
 
+st.set_page_config(page_title="Hydrocarbon Prediction",layout="wide")
 st.title("🛢️ Hydrocarbon Zone Prediction App")
-
 st.write("Upload any well log CSV and predict hydrocarbon zones.")
 
-# ----------------------------------------------------------
-# LOAD MODEL & SCALER (SAFE LOADING)
-# ----------------------------------------------------------
+
 
 @st.cache_resource
 def load_model():
@@ -38,28 +26,13 @@ model = load_model()
 scaler = load_scaler()
 
 st.success("Model and Scaler Loaded Successfully")
-
-# ----------------------------------------------------------
-# FILE UPLOAD
-# ----------------------------------------------------------
-
 uploaded_file = st.file_uploader("Upload CSV File", type=["csv"])
-
-# ==========================================================
-# MAIN APP LOGIC (ONLY RUN IF FILE IS UPLOADED)
-# ==========================================================
-
 if uploaded_file is not None:
 
     df = pd.read_csv(uploaded_file)
 
     st.subheader("Dataset Preview")
     st.dataframe(df)
-
-    # ------------------------------------------------------
-    # COLUMN MAPPING (FIXES ALL CSV TYPES)
-    # ------------------------------------------------------
-
     st.sidebar.header("Select Columns")
 
     depth_col = st.sidebar.selectbox("Depth Column", df.columns)
@@ -68,17 +41,11 @@ if uploaded_file is not None:
     rhob_col = st.sidebar.selectbox("Density Column", df.columns)
     nphi_col = st.sidebar.selectbox("Neutron Column", df.columns)
 
-    # ------------------------------------------------------
-    # CREATE WORKING DATAFRAME
-    # ------------------------------------------------------
-
     working_df = df[[depth_col, gr_col, rt_col, rhob_col, nphi_col]].copy()
 
     working_df.columns = ["DEPTH", "GR", "RT", "RHOB", "NPHI"]
 
-    # ------------------------------------------------------
-    # CLEAN DATA
-    # ------------------------------------------------------
+    
 
     for col in ["GR", "RT", "RHOB", "NPHI"]:
         working_df[col] = working_df[col].fillna(
@@ -91,21 +58,13 @@ if uploaded_file is not None:
 
     st.info("Data Cleaned Successfully")
 
-    # ------------------------------------------------------
-    # DETECT DEPTH INTERVAL (NO FIXED ASSUMPTION)
-    # ------------------------------------------------------
-
+    
     depth_step = working_df["DEPTH"].diff().median()
 
     if np.isnan(depth_step) or depth_step == 0:
         depth_step = 1
 
     st.info(f"Detected Depth Interval: {depth_step}")
-
-    # ------------------------------------------------------
-    # PLOT WELL LOGS
-    # ------------------------------------------------------
-
     st.subheader("Well Logs")
 
     fig, ax = plt.subplots(1, 4, figsize=(16, 10), sharey=True)
@@ -125,11 +84,6 @@ if uploaded_file is not None:
     ax[3].set_title("NPHI")
 
     st.pyplot(fig)
-
-    # ------------------------------------------------------
-    # MODEL PREDICTION
-    # ------------------------------------------------------
-
     X = working_df[["GR", "RT", "RHOB", "NPHI"]]
 
     X_scaled = scaler.transform(X)
@@ -146,18 +100,9 @@ if uploaded_file is not None:
     )
 
     st.success("Prediction Completed")
-
-    # ------------------------------------------------------
-    # SHOW RESULTS
-    # ------------------------------------------------------
-
     st.subheader("Results")
 
     st.dataframe(working_df)
-
-    # ------------------------------------------------------
-    # SUMMARY
-    # ------------------------------------------------------
 
     hydro = (working_df["Prediction"] == "Hydrocarbon").sum()
 
@@ -167,11 +112,6 @@ if uploaded_file is not None:
 
     col1.metric("Hydrocarbon Zones", hydro)
     col2.metric("Non-Hydrocarbon Zones", non_hydro)
-
-    # ------------------------------------------------------
-    # PROBABILITY PLOT
-    # ------------------------------------------------------
-
     st.subheader("Hydrocarbon Probability")
 
     fig2, ax2 = plt.subplots(figsize=(5, 10))
@@ -185,10 +125,6 @@ if uploaded_file is not None:
     ax2.set_ylabel("Depth")
 
     st.pyplot(fig2)
-
-    # ------------------------------------------------------
-    # PAY ZONE DETECTION (ANY DEPTH INTERVAL)
-    # ------------------------------------------------------
 
     hydro_df = working_df[working_df["Prediction"] == "Hydrocarbon"]
 
@@ -205,21 +141,13 @@ if uploaded_file is not None:
 
             if current - prev > depth_step * 1.5:
 
-                zones.append({
-                    "Top": start,
-                    "Base": prev,
-                    "Thickness": prev - start
-                })
+                zones.append({"Top": start,"Base": prev,"Thickness": prev - start })
 
                 start = current
 
             prev = current
 
-        zones.append({
-            "Top": start,
-            "Base": prev,
-            "Thickness": prev - start
-        })
+        zones.append({"Top": start, "Base": prev,"Thickness": prev - start })
 
         zones_df = pd.DataFrame(zones)
 
@@ -230,9 +158,7 @@ if uploaded_file is not None:
     else:
         st.warning("No Hydrocarbon Zones Detected")
 
-    # ------------------------------------------------------
-    # DOWNLOAD RESULTS
-    # ------------------------------------------------------
+    
 
     csv = working_df.to_csv(index=False).encode("utf-8")
 
@@ -240,5 +166,4 @@ if uploaded_file is not None:
         "Download Results CSV",
         csv,
         "hydrocarbon_results.csv",
-        "text/csv"
-    )
+        "text/csv")
