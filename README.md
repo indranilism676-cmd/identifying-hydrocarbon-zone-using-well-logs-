@@ -95,7 +95,7 @@ Regularization:
 
 ---
 
-# 🛠 Tech Stack
+#  Tech Stack
 
 * Python
 * TensorFlow / Keras
