@@ -106,23 +106,7 @@ Regularization:
 * Scikit-learn
 * Joblib
 
----
 
-# Project Structure
-
-```text
-Hydrocarbon-Zone-Prediction/
-│
-├── hydrocarbon6.py
-├── hydrocarbon_prediction_model.keras
-├── scaler_cnn.pkl
-├── hydrocarbon_prediction.ipynb
-├── requirements.txt
-├── README.md
-└── realistic_synthetic_well_logs_5000.csv/
-```
-
----
 
 
 # Input CSV Format
