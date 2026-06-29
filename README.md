@@ -1,7 +1,7 @@
 #  Hydrocarbon Zone Prediction using Deep Neural Networks
 
 A Streamlit-based web application that predicts **hydrocarbon-bearing intervals** from well log data using a **Deep Neural Network (TensorFlow/Keras)**. Users can upload any well log CSV, map the required log columns, and obtain hydrocarbon predictions, probability estimates, and identified pay zones.
-
+ 
 
 
 #  Project Overview
